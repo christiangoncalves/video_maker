@@ -1,23 +1,30 @@
-const readline = require('readline-sync')
+const readline = require('readline-sync');
+const robots = {
+    text: require('./Robots/text.js'),
+    // image: require('./Robots/images'),
+    // video: require('./Robots/video'),
+}
 
-function start(){
-    const content = {}
+async function start(){
+    const content = {};
 
-    content.serchTerm = askAndReturnSearchTerm()
-    content.prefix = askAndReturnPrefix()
+    content.searchTerm = askAndReturnSearchTerm();
+    content.prefix = askAndReturnPrefix();
+
+    await robots.text(content);
 
     function askAndReturnSearchTerm(){
-        return readline.question('Type a Wikepedia search term: ')
+        return readline.question('Type a Wikepedia search term: ');
     }
 
     function askAndReturnPrefix(){
-        const prefixes = ['Who is', 'What is', 'The history of']
-        const selectedPrefixIndex = readline.keyInSelect(prefixes, 'Choose one option: ') 
-        const selectedPrefixText = prefixes[selectedPrefixIndex]
+        const prefixes = ['Who is', 'What is', 'The history of'];
+        const selectedPrefixIndex = readline.keyInSelect(prefixes, 'Choose one option: ');
+        const selectedPrefixText = prefixes[selectedPrefixIndex];
         
-        return selectedPrefixText
+        return selectedPrefixText;  
     }
 
-    console.log(content)
+    console.log(content);
 }
-    start()
+    start();

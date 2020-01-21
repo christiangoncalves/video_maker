@@ -18,9 +18,7 @@
   "homepage": "https://github.com/christiangoncalves/video_maker#readme",
   "dependencies": {
     "algorithmia": "^0.3.10",
-    "ibm-watson": "^5.3.0",
     "readline-sync": "^1.4.10",
-    "sbd": "^1.0.16",
-    "watson-developer-cloud": "^4.0.1"
+    "sbd": "^1.0.16"
   }
 }

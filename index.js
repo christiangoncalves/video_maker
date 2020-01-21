@@ -1,18 +1,30 @@
+const readline = require('readline-sync');
 const robots = {
-    input: require('./Robots/input'),
-    text: require('./Robots/text'),
-    state: require('./Robots/state'),
+    text: require('./Robots/text.js'),
     // image: require('./Robots/images'),
     // video: require('./Robots/video'),
 }
 
-async function start() {
-    
-    robots.input();
-    await robots.text();
+async function start(){
+    const content = {};
 
-    const content = robots.state.load();
-    console.dir(content, {depth: null});
+    content.searchTerm = askAndReturnSearchTerm();
+    content.prefix = askAndReturnPrefix();
+
+    await robots.text(content);
+
+    function askAndReturnSearchTerm(){
+        return readline.question('Type a Wikepedia search term: ');
+    }
+
+    function askAndReturnPrefix(){
+        const prefixes = ['Who is', 'What is', 'The history of'];
+        const selectedPrefixIndex = readline.keyInSelect(prefixes, 'Choose one option: ');
+        const selectedPrefixText = prefixes[selectedPrefixIndex];
+        
+        return selectedPrefixText;  
+    }
+
+    console.log(content);
 }
-
-start();
+    start();

@@ -1,8 +1,11 @@
+//Imports
+const state = require('./state');
 const algorithmia = require('algorithmia');
 const algorithmiaApiKey = require('../credentials/algorithmia.json').apiKey;
 const setenceBoundaryDetection = require('sbd');
 const watsonApiKey = require('../credentials/watson-nlu.json').apikey;
 
+//importing from IBM Watson Natural Language Understanding
 const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
 const { IamAuthenticator } = require('ibm-watson/auth');
 
@@ -11,8 +14,6 @@ const nlu = new NaturalLanguageUnderstandingV1({
     version: '2018-04-05',
     url: 'https://gateway.watsonplatform.net/natural-language-understanding/api/'
 });
-
-const state = require('./state');
 
 async function robot() {
     const content = state.load();
@@ -87,6 +88,8 @@ async function fetchkeywordsOfAllSentences(content) {
     }
 }
 
+
+//using the IBM Watson Natural Language Understanding
 async function fetchWatsonAndReturnKeywords(sentence) {
     return new Promise((resolve, reject) => {
         nlu.analyze({
@@ -110,4 +113,5 @@ async function fetchWatsonAndReturnKeywords(sentence) {
     });
 }
 
+//exporting text robot
 module.exports = robot;

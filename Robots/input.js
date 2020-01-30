@@ -1,3 +1,4 @@
+//imports
 const readline = require('readline-sync');
 const state = require('./state');
 
@@ -23,4 +24,5 @@ function robot() {
     }
 }
 
+//exporting input robot
 module.exports = robot;

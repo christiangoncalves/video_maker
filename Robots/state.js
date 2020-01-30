@@ -1,3 +1,4 @@
+//imports
 const fs = require('fs');
 const contentFilePath = './content.json';
 
@@ -12,4 +13,6 @@ function load(){
     return contentJson
 }
 
+
+//exporting state robot
 module.exports = {save, load}

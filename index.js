@@ -1,18 +1,19 @@
 const robots = {
     input: require('./Robots/input'),
-    text: require('./Robots/text'),
     state: require('./Robots/state'),
-    // image: require('./Robots/images'),
+    text: require('./Robots/text'),
+    image: require('./Robots/images'),
     // video: require('./Robots/video'),
 }
 
 async function start() {
     
-    robots.input();
-    await robots.text();
+    // robots.input();
+    // await robots.text();
+    await robots.image();
 
-    const content = robots.state.load();
-    console.dir(content, {depth: null});
+    // const content = robots.state.load();
+    // console.dir(content, {depth: null});
 }
 
 start();
